@@ -5,7 +5,7 @@ import requests
 import streamlit as st
 
 MAX_FILE_SIZE_BYTES = 5 * 1024 * 1024  # Strictly under 5 MB for POC
-PARSER_OPTIONS = ["markitdown", "anydoc", "docling"]  # "markitdown" is index 0 (default)
+PARSER_OPTIONS = ["markitdown", "anydoc"]  # "markitdown" is index 0 (default)
 
 st.set_page_config(page_title="Document to Markdown POC", layout="wide")
 st.title("Document to Markdown Extraction POC")
@@ -15,7 +15,7 @@ st.caption("Upload a file under 5 MB. Default parser is MarkItDown; output is re
 api_url = st.text_input(
     "API Gateway REST API Endpoint (/extract)",
     value=os.getenv("EXTRACT_API_URL", ""),
-    placeholder="https://<api-id>.execute-api.ap-south-2.amazonaws.com/prod/extract",
+    placeholder="https://<api-id>.execute-api.ap-south-1.amazonaws.com/prod/extract",
 )
 
 selected_parser = st.radio(
